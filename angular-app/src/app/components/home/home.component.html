@@ -1,7 +1,15 @@
+<h4><u>Customers List</u></h4>
+
+<p>
+	> <span>Please select any record/s to see invoice</span>
+</p>
+
 <div class="divTable">
 	<div class="divTableHeading">
 		<div class="divTableRow">
-			<div class="divTableCell">&nbsp;</div>
+			<div class="divTableCell">
+				<input type="checkbox" class="form-checkbox" (change)="selectAllRows()">
+			</div>
 			<div class="divTableCell">First Name</div>
 			<div class="divTableCell">Last Name</div>
 			<div class="divTableCell">Product</div>
@@ -12,7 +20,7 @@
 	<div class="divTableBody">
 		<div class="divTableRow" *ngFor="let customer of baseService.customers; let index = index" [ngClass]="{'selected': customer.selected}">
 			<div class="divTableCell">
-				<input type="checkbox" class="form-checkbox" (change)="toggleRowSelect(index)">
+				<input type="checkbox" [checked]="customer.selected" class="form-checkbox" (change)="toggleRowSelect(index)">
 			</div>
 			<div class="divTableCell">{{ customer.first_name }}</div>
 			<div class="divTableCell">{{ customer.last_name }}</div>
@@ -24,6 +32,6 @@
 </div>
 
 <div class="footer">
-	<button class="button" (click)="generateInvoice()">Generate Invoice</button>
+	<button class="button" [disabled]="isAnyRowSelected()" [ngClass]="{'disable': isAnyRowSelected()}" (click)="generateInvoice()">Generate Invoice</button>
 </div>
 <router-outlet></router-outlet>

@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  selectAll: boolean = false;
+
   constructor(public baseService: BaseService,
   	public router: Router) { }
 
@@ -25,8 +27,21 @@ export class HomeComponent implements OnInit {
   	this.baseService.customers[index].selected = !this.baseService.customers[index].selected;
   }
 
+  isAnyRowSelected() {
+    return !(this.baseService.customers.find((obj) => { return obj.selected }));
+  }
+
   generateInvoice() {
-  	this.router.navigate(['invoice'])
+    this.router.navigate(['invoice']);
+  }
+
+  selectAllRows() {
+    this.selectAll = !this.selectAll;
+
+    this.baseService.customers.forEach((obj) => {
+      obj.selected = this.selectAll;
+    });
+    
   }
 
 }

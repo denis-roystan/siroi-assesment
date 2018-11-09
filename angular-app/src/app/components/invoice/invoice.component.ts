@@ -21,6 +21,8 @@ export class InvoiceComponent implements OnInit {
   		return obj.selected;
   	});
 
+  	!(this.items.length > 0) && this.router.navigate(['']);
+
   	this.items.forEach((obj) => {
   		obj.tax_amount = this.getTaxAmount(obj);
   		obj.total = this.getTotal(obj);

@@ -1,3 +1,8 @@
+body {
+	background-color: #efefef;
+	font-family: cursive;
+}
+
 /* Table CSS */
 .divTable{
 	display: table;
@@ -10,7 +15,15 @@
 	display: table-row;
 }
 
+/* The animation code */
+@keyframes fillBackground {
+    from {background-color: #efefef;}
+    to {background-color: #c2dbff;}
+}
+
 .divTableRow.selected {
+	animation-name: fillBackground;
+  animation-duration: 2s;
 	color: #202124;
   background: #c2dbff;
 }
