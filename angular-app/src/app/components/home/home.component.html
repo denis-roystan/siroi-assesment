@@ -1,0 +1,29 @@
+<div class="divTable">
+	<div class="divTableHeading">
+		<div class="divTableRow">
+			<div class="divTableCell">&nbsp;</div>
+			<div class="divTableCell">First Name</div>
+			<div class="divTableCell">Last Name</div>
+			<div class="divTableCell">Product</div>
+			<div class="divTableCell">Quantity</div>
+			<div class="divTableCell">Unit Price ($)</div>
+		</div>
+	</div>
+	<div class="divTableBody">
+		<div class="divTableRow" *ngFor="let customer of baseService.customers; let index = index" [ngClass]="{'selected': customer.selected}">
+			<div class="divTableCell">
+				<input type="checkbox" class="form-checkbox" (change)="toggleRowSelect(index)">
+			</div>
+			<div class="divTableCell">{{ customer.first_name }}</div>
+			<div class="divTableCell">{{ customer.last_name }}</div>
+			<div class="divTableCell">{{ customer.product }}</div>
+			<div class="divTableCell">{{ customer.quantity }}</div>
+			<div class="divTableCell">{{ customer.unit_price }}</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer">
+	<button class="button" (click)="generateInvoice()">Generate Invoice</button>
+</div>
+<router-outlet></router-outlet>

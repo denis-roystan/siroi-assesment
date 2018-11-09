@@ -1,0 +1,39 @@
+<!-- The Modal -->
+<div id="myModal" class="modal" (click)="routeToHome($event)">
+
+  <!-- Modal content -->
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="routeToHome($event)">&times;</span>
+    <div class="divTable">
+			<div class="divTableHeading">
+				<div class="divTableRow">
+					<div class="divTableCell">No</div>
+					<div class="divTableCell">Product</div>
+					<div class="divTableCell">Quantity</div>
+					<div class="divTableCell">Unit Price</div>
+					<div class="divTableCell">Tax amount</div>
+					<div class="divTableCell">Total ($)</div>
+				</div>
+			</div>
+			<div class="divTableBody">
+				<div class="divTableRow" *ngFor="let item of items; let index = index">
+					<div class="divTableCell">{{ index + 1 }}</div>
+					<div class="divTableCell">{{ item.product }}</div>
+					<div class="divTableCell">{{ item.quantity }}</div>
+					<div class="divTableCell">{{ item.unit_price }}</div>
+					<div class="divTableCell">{{ item.tax_amount }}</div>
+					<div class="divTableCell">{{ item.total }}</div>
+				</div>
+				<div class="divTableRow lastRow">
+					<div class="divTableCell">&nbsp;</div>
+					<div class="divTableCell">&nbsp;</div>
+					<div class="divTableCell">&nbsp;</div>
+					<div class="divTableCell">&nbsp;</div>
+					<div class="divTableCell">&nbsp;<b>TOTAL</b></div>
+					<div class="divTableCell">&nbsp;<span>{{ grandTotal.toFixed(2) }}</span></div>
+				</div>
+			</div>
+		</div>
+  </div>
+
+</div>
